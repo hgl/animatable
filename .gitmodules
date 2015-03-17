@@ -1,0 +1,3 @@
+[submodule "web-animations"]
+	path = web-animations
+	url = git@github.com:web-animations/web-animations-next.git
