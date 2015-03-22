@@ -4,9 +4,9 @@ src = \
 	src/AnimationTimeline.js \
 	src/easingFunction.js \
 	src/KeyframeEffect.js \
-	src/style.js
+	src/property.js
 
-style_src = \
+property_src = \
 	web-animations/src/property-interpolation.js \
 	web-animations/src/interpolation.js \
 	web-animations/src/handler-utils.js \
@@ -20,15 +20,12 @@ style_src = \
 	web-animations/src/apply.js \
 	web-animations/src/property-names.js
 
-.INTERMEDIATE: src/style.js
+.INTERMEDIATE: src/property.js
 
-all: animatable.js test/polyfill.js
+all: animatable.js
 
 animatable.js: $(src)
 	jspm bundle-sfx src/animatable $@ --no-mangle --skip-source-maps
 
-src/style.js: src/style.tpl.js $(style_src)
-	awk -f tools/replace.awk -v 'files=$(style_src)' $< >$@
-
-test/polyfill.js:
-	jspm bundle-sfx es6-shim $@ --no-mangle --skip-source-maps
+src/property.js: src/property.tpl.js $(property_src)
+	awk -f tools/replace.awk -v 'files=$(property_src)' $< >$@

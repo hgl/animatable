@@ -8,8 +8,10 @@ System.config({
 });
 
 System.config({
-  "map": {
-    "es6-shim": "github:es-shims/es6-shim@0.27.1"
+  "meta": {
+    "src/Animation": {
+      "format": "es6"
+    }
   }
 });
 

@@ -1,11 +1,10 @@
 {
   "jspm": {
+    "main": "src/animatable.js",
+    "format": "es6",
     "directories": {
       "lib": "src",
       "packages": "jspm_packages"
-    },
-    "dependencies": {
-      "es6-shim": "github:es-shims/es6-shim@^0.27.1"
     }
   }
 }

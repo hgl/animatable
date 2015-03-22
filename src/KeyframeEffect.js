@@ -1,7 +1,7 @@
 import easingFunction from "./easingFunction";
-import * as style from "./style";
+import * as property from "./property";
 
-export default class KeyframeEffect {
+window.KeyframeEffect = class {
 	constructor(target, frames, options) {
 		this.target = target;
 		this._assignOptions(options);
@@ -442,7 +442,7 @@ export default class KeyframeEffect {
 			let names = Object.keys(this._properties);
 			for (let i = 0; i < names.length; i++) {
 				let name = names[i];
-				style.remove(this.target, name);
+				property.remove(this.target, name);
 			}
 			return;
 		}
@@ -453,7 +453,7 @@ export default class KeyframeEffect {
 			if (frac < start || frac > end) continue;
 			let transformed = easing(frac);
 			let val = value(transformed);
-			style.set(this.target, name, val);
+			property.set(this.target, name, val);
 		}
 	}
 }
@@ -537,7 +537,7 @@ function getSegments(props) {
 				start: seg.offset,
 				end: nextSeg.offset,
 				easing: seg.easing,
-				value: style.interpolate(name, seg.value, nextSeg.value)
+				value: property.interpolate(name, seg.value, nextSeg.value)
 			};
 			newSegs.push(seg);
 		}

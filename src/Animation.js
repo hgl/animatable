@@ -1,6 +1,6 @@
 let sequenceNumber = 0;
 
-export default class Animation {
+window.Animation = class {
 	constructor(effect = null, timeline = null) {
 		this._sequenceNumber = sequenceNumber++;
 		this._startTime = null;

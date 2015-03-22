@@ -1,4 +1,6 @@
-export default class AnimationTimeline {
+import "./Animation";
+
+window.AnimationTimeline = class {
 	constructor(originTime) {
 		this._ticking = false;
 		this._animations = [];
