@@ -1,3 +1,7 @@
 import "./AnimationTimeline";
 
-document.timeline = new AnimationTimeline(0);
+Object.defineProperty(document, "timeline", {
+	value: new AnimationTimeline(0),
+	configurable: true,
+	enumerable: true,
+});
