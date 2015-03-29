@@ -158,7 +158,7 @@ window.KeyframeEffect = class {
 				}
 				this._composite = composite;
 			},
-			spacing: "distribute",
+			_spacing: "distribute",
 			get spacing() {
 				return this._spacing;
 			},
@@ -355,7 +355,7 @@ window.KeyframeEffect = class {
 		this._segments = segs;
 	}
 
-	_normalizeFrames(frames) {
+	_normalizeFrames() {
 		let effect = this;
 		let frames = this._frames;
 		let newFrames = [];
@@ -514,10 +514,13 @@ function getProperties(frames) {
 function isPropertyName(name) {
 	switch (name) {
 	case "_offset":
+	case "offset":
 	case "computedOffset":
 	case "_easing":
 	case "_easingFunction":
+	case "easing":
 	case "_composite":
+	case "composite":
 		return false;
 	}
 	return true;
