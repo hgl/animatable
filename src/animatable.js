@@ -2,7 +2,7 @@ import "./KeyframeEffect";
 import "./timeline";
 
 Element.prototype.animate = function (effect, options) {
-	let effect = new KeyframeEffect(this, effect, options);
+	effect = new KeyframeEffect(this, effect, options);
 	return document.timeline.play(effect);
 };
 
