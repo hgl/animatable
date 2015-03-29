@@ -5,7 +5,7 @@ window.AnimationTimeline = class {
 		this._ticking = false;
 		this._animations = [];
 		this._originTime = originTime;
-		this._currentTime = performance.now();
+		this._currentTime = null;
 	}
 
 	play(effect = null) {
@@ -22,15 +22,11 @@ window.AnimationTimeline = class {
 	get currentTime() {
 		if (this._currentTime === null) {
 			Promise.resolve().then(() => {
-				if (!this._ticking) this._currentTime = null;
+				this._currentTime = null;
 			});
 			return this._currentTime = performance.now() - this._originTime;
 		}
 		return this._currentTime;
-	}
-
-	_setAbsoluteTime(time) {
-		this._currentTime = time - this._originTime;
 	}
 
 	_startTicking() {
@@ -43,8 +39,7 @@ window.AnimationTimeline = class {
 		return this._animations.some(anim => anim.playState === "running");
 	}
 
-	_tick(time) {
-		this._setAbsoluteTime(time);
+	_tick() {
 		let anims = this._animations;
 		let hasRunningAnim = false;
 		for (let i = 0; i < anims.length; i++) {
