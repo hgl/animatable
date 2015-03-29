@@ -1,10 +1,11 @@
 src = \
-	src/animatable.js \
 	src/Animation.js \
 	src/AnimationTimeline.js \
 	src/easingFunction.js \
+	src/property.js \
 	src/KeyframeEffect.js \
-	src/property.js
+	src/timeline.js \
+	src/animatable.js
 
 property_src = \
 	web-animations/src/property-interpolation.js \
@@ -29,3 +30,6 @@ animatable.js: $(src)
 
 src/property.js: src/property.tpl.js $(property_src)
 	awk -f tools/replace.awk -v 'files=$(property_src)' $< >$@
+
+clean:
+	rm animatable.js
